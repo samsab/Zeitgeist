@@ -6,5 +6,5 @@ public:
 	virtual std::string getNthPopular(unsigned int n);
 
 protected:
-	bool isSorted = false;
+	bool isSorted;
 };
