@@ -10,10 +10,10 @@ public:
 	virtual unsigned int getCount(std::string s);
 	virtual std::string getNthPopular(unsigned int n);
 	virtual unsigned int numEntries();
+	virtual void bubbleUp(unsigned long i);
 
 protected:
 	//Not sure what to do with this
-	std::vector<std::pair<int, std::string> > wordCountVector;
-
-	std::unordered_set<std::pair<std::string, int> > wordCountTable;
+	std::vector<std::pair<int, std::string>> wordCountVector;
+	std::unordered_set<std::pair<std::string, int>> wordCountTable;
 };
