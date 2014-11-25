@@ -14,4 +14,6 @@ public:
 protected:
 	//Not sure what to do with this
 	std::vector<std::pair<int, std::string> > wordCountVector;
+
+	std::unordered_set<std::pair<std::string, int> > wordCountTable;
 };
