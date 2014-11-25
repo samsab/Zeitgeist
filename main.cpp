@@ -12,7 +12,9 @@
 #include <time.h>
 
 #include "smarterTrends.h" //You will need to change this to match your own class
+#include "stephanWolfTrends.h"
 #include "utilities.h"
+
 
 /**
  * This tests a simple (but unlikely) use case, which is to read in all the data, and then print out the data in sorted order
@@ -21,7 +23,8 @@
  * Compare your 28885.txt.out to 28885_txt.out, using diff,s to see if your code is producing correct output.
  */
 double useCase_addAllThenGetInOrder(){
-	Trends* tr = new smarterTrends(); //You will need to change this to match your own class!
+	//Trends* tr = new smarterTrends(); //You will need to change this to match your own class!
+	Trends* tr = new stephanWolfTrends();
 
 	std::vector<std::string> wordlist = getWordList("data/28885.txt");
 
