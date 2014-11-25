@@ -12,7 +12,7 @@ void stephanWolfTrends::increaseCount(std::string s, unsigned int amount) {
 		} 
 	}
 	if(alreadyExists == false) {
-		wordCountTable.insert(s, 1);
+		wordCountTable.insert(s, amount);
 	}
 }
 
