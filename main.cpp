@@ -11,11 +11,18 @@
 #include <vector>
 #include <time.h>
 
+<<<<<<< HEAD
 #include "utilities.h"
 
 #include "naiveTrends.h"
 //#include "smarterTrends.h"
 //#include "myTrends.h"
+=======
+#include "smarterTrends.h" //You will need to change this to match your own class
+#include "stephanWolfTrends.h"
+#include "utilities.h"
+
+>>>>>>> c8ec2d457edddaebabc06a8f1d78d130180c5976
 
 /**
  * This tests a simple (but unlikely) use case, which is to read in all the data, and then print out the data in sorted order
@@ -24,9 +31,14 @@
  * Compare your 28885.txt.out to 28885_txt.out, using diff,s to see if your code is producing correct output.
  */
 double useCase_addAllThenGetInOrder(){
+<<<<<<< HEAD
 	Trends* tr = new naiveTrends();
 	//Trends* tr = new smarterTrends();
 	//Trends* tr = new myTrends();
+=======
+	//Trends* tr = new smarterTrends(); //You will need to change this to match your own class!
+	Trends* tr = new stephanWolfTrends();
+>>>>>>> c8ec2d457edddaebabc06a8f1d78d130180c5976
 
 	std::vector<std::string> wordlist = getWordList("data/28885.txt");
 
@@ -58,6 +70,32 @@ double useCase_addAllThenGetInOrder(){
 	delete tr;
 
 	return end - start;
+}
+
+void useCase_getMostPopular(){
+	//Trends* tr = new smarterTrends(); //You will need to change this to match your own class!
+	Trends* tr = new stephanWolfTrends();
+
+	std::vector<std::string> wordlist = getWordList("data/28885.txt");
+	std::ofstream out("data/28885.txt.out");
+
+	//We only want to time how long addToTrends takes, so we get
+	// the starting time, which is the clock time, in milliseconds
+	double start = getTimeInMillis();
+	//Now add all the words to the Trends data structure
+	for (unsigned int i = 0; i<wordlist.size(); i++){
+		tr->increaseCount(wordlist[i], 1);
+		out << tr->getNthPopular(0) << std::endl;
+	}
+
+	//Now get the end time
+	double end = getTimeInMillis();
+	out.close();
+
+	std::cout << "increaseCount time: " << (end - start) / wordlist.size() << " ms per word" << std::endl;
+	std::cout << "getNth followed by getCount, time: " << (end - start) / tr->numEntries() << " ms per entry" << std::endl;
+
+	delete tr;
 }
 
 /*
