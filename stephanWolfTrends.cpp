@@ -3,9 +3,15 @@
 
 void stephanWolfTrends::increaseCount(std::string s, unsigned int amount) {
 
-	//index of s, will equal wordCountTable.end() if it doesn't exist.
-	int i = wordCountTable.first.find(s);
+	bool alreadyExists = false;
 
-	if(i = wordCountTable.first.end()) {
+	for(int i = 0; i < wordCountTable.size(); i++) {
+		if(wordCountTable[i].first = s) {
+			wordCountTable[i].second + amount;
+			alreadyExists = true;
+		} 
+	}
+	if(alreadyExists == false) {
 		wordCountTable.insert(s, 1);
-	} else {
+	}
+}
