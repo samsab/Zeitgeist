@@ -11,7 +11,7 @@ void stephanWolfTrends::increaseCount(std::string s, unsigned int amount) {
 			alreadyExists = true;
 		} 
 	}
-	if(alreadyExists == false) {
+	if(!alreadyExists) {
 		wordCountTable.insert(s, 1);
 	}
 }
