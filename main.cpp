@@ -58,6 +58,32 @@ double useCase_addAllThenGetInOrder(){
 	return end - start;
 }
 
+void useCase_getMostPopular(){
+	//Trends* tr = new smarterTrends(); //You will need to change this to match your own class!
+	Trends* tr = new stephanWolfTrends();
+
+	std::vector<std::string> wordlist = getWordList("data/28885.txt");
+	std::ofstream out("data/28885.txt.out");
+
+	//We only want to time how long addToTrends takes, so we get
+	// the starting time, which is the clock time, in milliseconds
+	double start = getTimeInMillis();
+	//Now add all the words to the Trends data structure
+	for (unsigned int i = 0; i<wordlist.size(); i++){
+		tr->increaseCount(wordlist[i], 1);
+		out << tr->getNthPopular(0) << std::endl;
+	}
+
+	//Now get the end time
+	double end = getTimeInMillis();
+	out.close();
+
+	std::cout << "increaseCount time: " << (end - start) / wordlist.size() << " ms per word" << std::endl;
+	std::cout << "getNth followed by getCount, time: " << (end - start) / tr->numEntries() << " ms per entry" << std::endl;
+
+	delete tr;
+}
+
 /*
  * The only purpose of main() is to call processFile with increasingingly larger and larger
  * files. A larger file will give a more accurate sense of how fast addToTrends is, but at some
