@@ -11,6 +11,7 @@ public:
 	virtual std::string getNthPopular(unsigned int n);
 	virtual unsigned int numEntries();
 	virtual void bubbleUp(unsigned long i);
+	virtual void stephanWolfTrends::trickleDown(unsigned long i);
 
 protected:
 	//Not sure what to do with this
